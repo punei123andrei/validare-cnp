@@ -39,45 +39,48 @@ npm run build
 
 ## 📂 Plugin Structure
 
-```
-└── 📁formular-validare
-    └── 📁build
-        └── 📁formular-validare
-            └── block.json
-            └── index.asset.php
-            └── index.css
-            └── index.css.map
-            └── index.js
-            └── index.js.map
-            └── style-index.css
-            └── style-index.css.map
-            └── view.asset.php
-            └── view.js
-            └── view.js.map
-    └── 📁lib
-        └── autoload.php
-        └── 📁blocks
-            └── 📁inc
-            └── index.php
-        └── 📁hooks
-            └── 📁inc
-                └── block-assets.php
-                └── plugin-settings-page.php
-                └── register-plugin-settings.php
-            └── index.php
-    └── 📁src
-        └── 📁formular-validare
-            └── block.json
-            └── edit.js
-            └── editor.scss
-            └── index.js
-            └── save.js
-            └── style.scss
-            └── view.js
-    └── formular-validare.php
-    └── package-lock.json
-    └── package.json
-    └── Readme.md
-```
+📁 formular-validare
+│
+├── 📁 build
+│   └── 📁 formular-validare
+│       ├── block.json
+│       ├── index.asset.php
+│       ├── index.css
+│       ├── index.css.map
+│       ├── index.js
+│       ├── index.js.map
+│       ├── style-index.css
+│       ├── style-index.css.map
+│       ├── view.asset.php
+│       ├── view.js
+│       ├── view.js.map
+│
+├── 📁 lib
+│   ├── autoload.php
+│   ├── 📁 blocks
+│   │   ├── 📁 inc
+│   │   ├── index.php
+│   ├── 📁 hooks
+│   │   ├── 📁 inc
+│   │   │   ├── block-assets.php
+│   │   │   ├── plugin-settings-page.php
+│   │   │   ├── register-plugin-settings.php
+│   │   ├── index.php
+│
+├── 📁 src
+│   ├── 📁 formular-validare
+│   │   ├── block.json
+│   │   ├── edit.js
+│   │   ├── editor.scss
+│   │   ├── index.js
+│   │   ├── save.js
+│   │   ├── style.scss
+│   │   ├── view.js
+│
+├── formular-validare.php
+├── package-lock.json
+├── package.json
+└── Readme.md
+
 
 
