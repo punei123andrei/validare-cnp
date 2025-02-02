@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "form/form-cta",
+  "version": "0.1.0",
+  "title": "Formular Validare",
+  "icon": "email",
+  "description": "A block that renders a call-to-action form with a single input.",
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true,
+      "background": true
+    }
+  },
+  "attributes": {
+    "headerText": {
+      "type": "string",
+      "default": "Formular Validare CNP"
+    },
+    "inputPlaceholder": {
+      "type": "string",
+      "default": "CNP"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Verifica CNP"
+    }
+  },
+  "textdomain": "cloudweb-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
