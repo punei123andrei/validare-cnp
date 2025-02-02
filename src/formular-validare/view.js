@@ -2,6 +2,7 @@ import domReady from '@wordpress/dom-ready';
 
 async function fetchApiKey() {
     try {
+        // Ensure wpApiSettings is available before making requests
         if (typeof window.wpApiSettings === "undefined") {
             throw new Error("wpApiSettings is not defined. Ensure it's properly localized.");
         }
@@ -14,10 +15,8 @@ async function fetchApiKey() {
             }
         });
 
-        const text = await response.text(); // ✅ Get raw response first
-        console.log("Raw API Response:", text); // ✅ Debugging step
-
-        const data = JSON.parse(text); // ✅ Try to parse it
+        if (!response.ok) throw new Error('Failed to fetch API key');
+        const data = await response.json();
         return data['formular-api-key'];
     } catch (error) {
         console.error('Error fetching API key:', error);
@@ -26,16 +25,17 @@ async function fetchApiKey() {
 }
 
 domReady(() => {
-    console.log("DOM Ready! Checking wpApiSettings...");
-    // console.log(window.wpApiSettings); // Debugging
 
     const form = document.querySelector('.form-cta-form');
+    
+
 
     if (form) {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             const inputField = form.querySelector('.form-cta-input');
+            const resultsDiv = document.querySelector('.cnp-result'); 
             const cnpValue = inputField.value.trim();
 
             if (!cnpValue) {
@@ -48,7 +48,7 @@ domReady(() => {
             let apiKey = await fetchApiKey();
 
             if (!apiKey) {
-                alert("Nu s-a putut obține cheia API.");
+                resultsDiv.innerHTML = `<p style="color: red;">Nu s-a putut obține cheia API.</p>`;
                 return;
             }
 
@@ -65,10 +65,24 @@ domReady(() => {
                 }
 
                 const data = await response.json();
-                console.log('Rezultatul validării:', data);
+                // check if data is valid
+                if (!data.valid) {
+                    resultsDiv.innerHTML = `<p style="color: red;">CNP-ul introdus nu este valid.</p>`;
+                    return;
+                }
+                console.log(data.parsed);
 
-                alert(`Rezultat: ${JSON.stringify(data, null, 2)}`);
-
+                const translatedData = `
+                    <ul>
+                        <li><strong>Indice Județ:</strong> ${data.parsed.county_index}</li>
+                        <li><strong>Județul Nașterii:</strong> ${data.parsed.county_of_birth}</li>
+                        <li><strong>Data Nașterii:</strong> ${data.parsed.date_of_birth}</li>
+                        <li><strong>Rezident Străin:</strong> ${data.parsed.foreign_resident ? 'Da' : 'Nu'}</li>
+                        <li><strong>Sex:</strong> ${data.parsed.sex === 'm' ? 'Masculin' : 'Feminin'}</li>
+                    </ul>
+                `;
+                resultsDiv.innerHTML = translatedData;
+            
             } catch (error) {
                 console.error('Eroare API:', error);
                 alert('A apărut o eroare la validarea CNP-ului. Verifică din nou.');

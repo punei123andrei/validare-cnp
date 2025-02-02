@@ -20,21 +20,21 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Header Settings', 'cloudweb-blocks')}>
+                <PanelBody title={__('Header Settings', 'formular-validare')}>
                     <TextControl
-                        label={__('Header Text', 'cloudweb-blocks')}
+                        label={__('Header Text', 'formular-validare')}
                         value={headerText}
                         onChange={(value) => setAttributes({ headerText: value })}
-                        placeholder={__('Enter header text...', 'cloudweb-blocks')}
+                        placeholder={__('Enter header text...', 'formular-validare')}
                     />
                 </PanelBody>
 
-                <PanelBody title={__('Button Settings', 'cloudweb-blocks')}>
+                <PanelBody title={__('Button Settings', 'formular-validare')}>
                     <TextControl
-                        label={__('Button Text', 'cloudweb-blocks')}
+                        label={__('Button Text', 'formular-validare')}
                         value={buttonText}
                         onChange={(value) => setAttributes({ buttonText: value })}
-                        placeholder={__('Enter button text...', 'cloudweb-blocks')}
+                        placeholder={__('Enter button text...', 'formular-validare')}
                     />
                 </PanelBody>
             </InspectorControls>
@@ -45,7 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
                     className="form-cta-header"
                     value={headerText}
                     onChange={(value) => setAttributes({ headerText: value })}
-                    placeholder={__('Enter header text...', 'cloudweb-blocks')}
+                    placeholder={__('Enter header text...', 'formular-validare')}
                 />
                 <form className="form-cta-form">
                     <input
@@ -58,6 +58,7 @@ export default function Edit({ attributes, setAttributes }) {
                         {buttonText}
                     </button>
                 </form>
+                <div className="cnp-result"></div>
             </div>
         </>
     );

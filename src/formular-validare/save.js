@@ -25,6 +25,7 @@ export default function Save({ attributes }) {
                     {buttonText}
                 </button>
             </form>
+            <div className="cnp-result"></div>
         </div>
     );
 }

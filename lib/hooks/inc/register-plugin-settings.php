@@ -9,10 +9,6 @@
 
 namespace Validare\Blocks;
 
-
-add_action( 'admin_init', __NAMESPACE__ . '\register_formular_setting' );
-add_action( 'rest_api_init', __NAMESPACE__ . '\register_formular_setting' );
-add_action( 'rest_api_init', __NAMESPACE__ . '\register_formular_rest_api' ); 
 function register_formular_setting() {
 	register_setting(
 		'formular-blocks-settings',

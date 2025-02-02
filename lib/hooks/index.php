@@ -15,14 +15,14 @@
  */
 add_action( 'admin_init', __NAMESPACE__ . '\register_formular_setting' );
 add_action( 'rest_api_init', __NAMESPACE__ . '\register_formular_setting' );
-add_action( 'rest_api_init', __NAMESPACE__ . '\register_formular_rest_api' ); // ✅ Register API route
+add_action( 'rest_api_init', __NAMESPACE__ . '\register_formular_rest_api' );
 add_action( 'admin_menu', __NAMESPACE__ . '\add_formular_settings_page' );
 
 
 /**
  * Block Assets.
  */
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\cloudweb_enqueue_block_assets');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\form_localize_vars');
 
 // Register settings for the rest api
  $inc_dir = __DIR__ . '/inc/';
